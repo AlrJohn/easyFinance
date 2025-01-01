@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+.env
+build/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Vite
+.vite/
