@@ -1,30 +1,39 @@
-import React, {useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, {useState } from 'react'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import Transactions from "./Transactions";
+import AddTransaction from "./AddTransaction"
 
 function App() {
-  const [message, setMessage] = useState('');
+  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    fetch('http://127.0.0.1:5000/api/data')
-      .then(response => response.json())
-      .then(data => {
-        setMessage(data.message);
-      })
-      .catch(error => {
-        console.error('There was an error fetching data:', error);
-      });
-  }, []);
-  
+
 
   return (
-    <div className="App">
-      <h1>React and Flask API Integration</h1>
-      <p>{message}</p>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/login"
+          element={<LoginPage onLogin={(userData) => setUser(userData)} />}
+        />
+        <Route
+          path="/transactions"
+          element={
+            user ? <Transactions user={user} onSignOut={(userData) => setUser(userData)} /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/add_transaction"
+          element={user ? <AddTransaction user={user}/> : <Navigate to="/login" />}
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
+
+
 
 
 export default App
