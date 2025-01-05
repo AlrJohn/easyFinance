@@ -44,7 +44,7 @@ const signOut = (e) => {
           <li key={transaction.id}>
             Amount: ${transaction.amount} | Type: {transaction.type}
           </li>
-        )) : "No Transaction to Show"}
+        )) : "No Transactions to Show"}
       </ul>
       <button onClick={addTr}> Add Transactions</button>
     </div>
