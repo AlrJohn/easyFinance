@@ -1,0 +1,112 @@
+body{
+    background-image: linear-gradient(to top, #2B2B2B, #414141);
+}
+input{
+    outline: none;
+    min-height: 2em ;
+    min-width: 60%;
+    background: transparent;
+    border: none;
+    border-width: 2px;
+    text-indent: 1em;
+    font-size: 15px;
+    -webkit-text-fill-color: #7b7b7b;
+    color: #7b7b7b;
+    caret-color: #7b7b7b;
+}
+
+input:focus{
+    border-color:#A3C6E1;
+}
+
+p{
+    color: white;
+}
+
+button{
+    border: none;
+    border-radius: 20px;
+}
+#div-container-holds_form {
+    position: relative; /* Needed for positioning the pseudo-element */
+    background: #4d4d4d00;
+    color: #59595916;
+    min-width: 11cm;
+    box-shadow: 0 -18px 100px rgba(190, 190, 190, 0.13);
+    padding-top: 0;
+    padding-bottom: 10px;
+    min-height: 10cm;
+    border-radius: 40px;
+    z-index: 1; /* Ensures content stays on top */
+}
+
+#div-container-holds_form::before {
+    content: ''; /* Creates an empty pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.062), rgba(255, 255, 255, 0.123)); /* Gradient */
+    border-radius: 40px; /* Apply border-radius to the pseudo-element */
+    z-index: -1; /* Ensures the pseudo-element is behind the content */
+}
+
+h2{
+    border-top-left-radius:18px ;
+    border-top-right-radius: 18px;
+    color:white;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    margin-bottom: 1em;
+    color :white;
+    background: #48484816;
+    margin-top: 0;
+}
+.div-container-holds_input{
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: rgba(88,88,88,.1);
+    margin: 0em .25em 1.5em .25em;
+    padding: .1em .5em .1em .5em ;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.2);
+    min-height: 40px;
+    min-width:11cm;
+}
+
+button{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+#button-toggle-toggleForm{
+    color:rgba(255, 255, 255, 0.749);
+    background:#2b2b2b; 
+    margin: 0em 0em 0em 1em;
+    transition-duration: 500ms;
+    transition-property: all;
+}
+#button-submit-submitForm{
+
+    color:rgba(255, 255, 255, 0.585);
+    background: #333333;
+    transition-duration: 500ms;
+    transition-property: all;
+    
+}
+#button-submit-submitForm:hover,
+#button-toggle-toggleForm:hover{
+    background:#272727;
+    border-radius: 40px;
+    padding:1em 1.8em 1em 1.8em;
+    
+}
+#p-message-errorMessage{
+    color: red;
+    display:none;
+}
+#div-container-register_password:focus-within, 
+#div-container-register_confirm_password:focus-within{
+    color: white;
+}

@@ -1,0 +1,17 @@
+#div-container-body{
+    color: black;
+    border: solid;
+    min-width: 10cm;
+    
+}
+
+#button-sign_out-transtactions{
+    position: absolute;
+    top: 0;
+    right:0px;
+}
+
+#div-container-TransactionList{
+    color: green;
+    border: solid;
+}

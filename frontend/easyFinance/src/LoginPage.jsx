@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './LoginPage.css';
 
 const LoginPage = ({ onLogin }) => {
     const navigate = useNavigate();
@@ -8,7 +9,8 @@ const LoginPage = ({ onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
     const [path, setPath] = useState('login');
     const [message, setMessage] = useState("");
-    
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [email, setEmail] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -18,12 +20,34 @@ const LoginPage = ({ onLogin }) => {
     }
 
     const toggleForm = () => {
-
+        document.querySelector( "#register-login input:first-of-type").focus();
         setIsLogin(!isLogin);
     
         setPath(!isLogin ? "login" : "register");
+        
+        
 
-      }
+    }
+
+    const registerNewUser = (e)=>{
+        if( confirmPassword!== password ){
+            e.preventDefault();
+            document.getElementById( "p-message-errorMessage" ).style.display = "block";
+            document.getElementById( "input-password-register_password" ).style.borderColor = "red";
+            document.getElementById( "input-password-register_confirm_password" ).style.borderColor = "red";
+            document.getElementById( "div-container-register_password" ).style.color = 'red';
+            document.getElementById( "div-container-register_confirm_password" ).style.color = 'red';
+        }
+        else{
+            document.getElementById( "p-message-errorMessage" ).style.display = "none";
+            document.getElementById( "input-password-register_password" ).style.borderColor = "black";
+            document.getElementById( "input-password-register_confirm_password" ).style.borderColor = "black";
+            document.getElementById( "div-container-register_password" ).style.color = 'white';
+            document.getElementById( "div-container-register_confirm_password" ).style.color = 'white';
+            console.log("New User Registered");
+            setIsLogin( !isLogin);
+        }
+    }
 
     const registerUser = async (username, password, path) => {
         try {
@@ -52,31 +76,130 @@ const LoginPage = ({ onLogin }) => {
         }
     };
 
-    return (
-        <div>
-            <h2>{isLogin? "Login" : "Register"}</h2>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="text"
-                    placeholder="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+    const nav = (e) => {
+        e.preventDefault();
+        onLogin({"username" : "test", "id" : 1});
+        navigate("/transactions");
+    }
 
-                <input
-                    type="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">{isLogin? "Login" : "Register"}</button>
+    if( !isLogin )
+        return(
+            <div id = "div-container-holds_form">
+                <h2>Register</h2>
+                
+                <form id="register-login" onSubmit={registerNewUser}>
+                    
+                    <div className="div-container-holds_input">
+                        
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "email"
+                            id = "input-email-register_email"
+                            placeholder = "example.gmail"
+                            value = {email}
+                            onChange = { (e) => setEmail( e.target.value )}
+                        />
+                    </div>
+                    <div className="div-container-holds_input">
+                        
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "text"
+                            id = "input-text-register_username"
+                            placeholder = "username"
+                            value = {username}
+                            onChange = { (e) => setUsername( e.target.value )}
+                        />
+                    </div>
+                    <div className="div-container-holds_input" id = "div-container-register_password">
+                       
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "password"
+                            id = "input-password-register_password"
+                            placeholder = "password"
+                            value = {password}
+                            onChange = { (e) => setPassword( e.target.value )}
+                        />
+                    </div>
+                    <div className="div-container-holds_input" id = "div-container-register_confirm_password">
+                        
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "password"
+                            id = "input-password-register_confirm_password"
+                            placeholder = "password"
+                            value = {confirmPassword}
+                            onChange={ (e) => setConfirmPassword( e.target.value )}                        
+                        />
+                    </div>
+                    <button
+                        id = "button-submit-submitForm"
+                        type = "submit"
+                        
+                        
+                    >Register</button>
+                </form>
+                <p id = "p-message-errorMessage" >Password do not match</p>
+                <p>
+                    Already have an account?
+                    <button
+                        id = "button-toggle-toggleForm"
+                        onClick = {toggleForm}
+                    >Login Here</button>
+                </p>
+                {message && <p>{message}</p>}
+            </div>
+
+        )
+
+    return (
+        <div id= "div-container-holds_form">
+            <button
+            onClick={nav}
+            >HOme</button>
+            <h2>{isLogin? "Login" : "Register"}</h2>
+            <form onSubmit={handleLogin} id ="register-login">
+                <div className="div-container-holds_input">
+                
+                    <input
+                        autoComplete="off"
+                        type="text"
+                        required
+                        id = "input-text-username"
+                        placeholder="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="div-container-holds_input">
+                    
+                    <input
+                        autoComplete="off"
+                        required
+                        type="password"
+                        id = "input-password-password"
+                        placeholder="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button
+                    id = "button-submit-submitForm"
+                    type="submit"
+                >{isLogin? "Login" : "Register"}</button>
 
             </form>
             <p>
                 {isLogin
                     ? "Don't have an account? "
                     : "Already have an account? "}
-                    <button onClick={toggleForm}>
+                    <button onClick={toggleForm}
+                    id="button-toggle-toggleForm">
                     {isLogin ? "Register here" : "Login here"}
                     </button>
             </p>
