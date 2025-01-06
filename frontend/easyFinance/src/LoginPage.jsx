@@ -77,11 +77,6 @@ const LoginPage = ({ onLogin }) => {
         }
     };
 
-    const nav = (e) => {
-        e.preventDefault();
-        onLogin({"username" : "test", "id" : 1});
-        navigate("/transactions");
-    }
 
     if( !isLogin )
         return(
@@ -160,9 +155,6 @@ const LoginPage = ({ onLogin }) => {
 
     return (
         <div id= "div-container-holds_form">
-            <button
-            onClick={nav}
-            >HOme</button>
             <h2>{isLogin? "Login" : "Register"}</h2>
             <form onSubmit={handleLogin} id ="register-login">
                 <div className="div-container-holds_input">
