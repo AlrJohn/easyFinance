@@ -9,7 +9,7 @@ const TransactionsPage = ({ user, onSignOut}) => {
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      const response = await fetch(`http://localhost:5000/auth/login/get_transactions/${user.id}`);
+      const response = await fetch(`https://aj.arjnhomenet.xyz/auth/login/get_transactions/${user.id}`);
       const data = await response.json();
 
       if (response.ok){

@@ -13,7 +13,7 @@ const addTransactions = ({user}) => {
 
         try{
             const user_id = user?.id;
-            const response = await fetch("http://127.0.0.1:5000/auth/login/transaction/create", {
+            const response = await fetch("https://aj.arjnhomenet.xyz/auth/login/transaction/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
