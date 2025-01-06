@@ -46,6 +46,7 @@ const LoginPage = ({ onLogin }) => {
             document.getElementById( "div-container-register_confirm_password" ).style.color = 'white';
             console.log("New User Registered");
             setIsLogin( !isLogin);
+            handleLogin(e);
         }
     }
 
@@ -82,80 +83,80 @@ const LoginPage = ({ onLogin }) => {
         navigate("/transactions");
     }
 
-    // if( !isLogin )
-    //     return(
-    //         <div id = "div-container-holds_form">
-    //             <h2>Register</h2>
+    if( !isLogin )
+        return(
+            <div id = "div-container-holds_form">
+                <h2>Register</h2>
                 
-    //             <form id="register-login" onSubmit={registerNewUser}>
+                <form id="register-login" onSubmit={registerNewUser}>
                     
-    //                 <div className="div-container-holds_input">
+                    <div className="div-container-holds_input">
                         
-    //                     <input
-    //                         autoComplete="off"
-    //                         required
-    //                         type = "email"
-    //                         id = "input-email-register_email"
-    //                         placeholder = "example.gmail"
-    //                         value = {email}
-    //                         onChange = { (e) => setEmail( e.target.value )}
-    //                     />
-    //                 </div>
-    //                 <div className="div-container-holds_input">
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "email"
+                            id = "input-email-register_email"
+                            placeholder = "example.gmail"
+                            value = {email}
+                            onChange = { (e) => setEmail( e.target.value )}
+                        />
+                    </div>
+                    <div className="div-container-holds_input">
                         
-    //                     <input
-    //                         autoComplete="off"
-    //                         required
-    //                         type = "text"
-    //                         id = "input-text-register_username"
-    //                         placeholder = "username"
-    //                         value = {username}
-    //                         onChange = { (e) => setUsername( e.target.value )}
-    //                     />
-    //                 </div>
-    //                 <div className="div-container-holds_input" id = "div-container-register_password">
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "text"
+                            id = "input-text-register_username"
+                            placeholder = "username"
+                            value = {username}
+                            onChange = { (e) => setUsername( e.target.value )}
+                        />
+                    </div>
+                    <div className="div-container-holds_input" id = "div-container-register_password">
                        
-    //                     <input
-    //                         autoComplete="off"
-    //                         required
-    //                         type = "password"
-    //                         id = "input-password-register_password"
-    //                         placeholder = "password"
-    //                         value = {password}
-    //                         onChange = { (e) => setPassword( e.target.value )}
-    //                     />
-    //                 </div>
-    //                 <div className="div-container-holds_input" id = "div-container-register_confirm_password">
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "password"
+                            id = "input-password-register_password"
+                            placeholder = "password"
+                            value = {password}
+                            onChange = { (e) => setPassword( e.target.value )}
+                        />
+                    </div>
+                    <div className="div-container-holds_input" id = "div-container-register_confirm_password">
                         
-    //                     <input
-    //                         autoComplete="off"
-    //                         required
-    //                         type = "password"
-    //                         id = "input-password-register_confirm_password"
-    //                         placeholder = "password"
-    //                         value = {confirmPassword}
-    //                         onChange={ (e) => setConfirmPassword( e.target.value )}                        
-    //                     />
-    //                 </div>
-    //                 <button
-    //                     id = "button-submit-submitForm"
-    //                     type = "submit"
+                        <input
+                            autoComplete="off"
+                            required
+                            type = "password"
+                            id = "input-password-register_confirm_password"
+                            placeholder = "password"
+                            value = {confirmPassword}
+                            onChange={ (e) => setConfirmPassword( e.target.value )}                        
+                        />
+                    </div>
+                    <button
+                        id = "button-submit-submitForm"
+                        type = "submit"
                         
                         
-    //                 >Register</button>
-    //             </form>
-    //             <p id = "p-message-errorMessage" >Password do not match</p>
-    //             <p>
-    //                 Already have an account?
-    //                 <button
-    //                     id = "button-toggle-toggleForm"
-    //                     onClick = {toggleForm}
-    //                 >Login Here</button>
-    //             </p>
-    //             {message && <p>{message}</p>}
-    //         </div>
+                    >Register</button>
+                </form>
+                <p id = "p-message-errorMessage" >Password do not match</p>
+                <p>
+                    Already have an account?
+                    <button
+                        id = "button-toggle-toggleForm"
+                        onClick = {toggleForm}
+                    >Login Here</button>
+                </p>
+                {message && <p>{message}</p>}
+            </div>
 
-    //     )
+        )
 
     return (
         <div id= "div-container-holds_form">
