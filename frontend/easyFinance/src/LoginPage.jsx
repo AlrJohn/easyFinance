@@ -27,7 +27,7 @@ const LoginPage = ({ onLogin }) => {
 
     const registerUser = async (username, password, path) => {
         try {
-        const response = await fetch("http://127.0.0.1:5000/auth/" + path, {
+        const response = await fetch("https://aj.arjnhomenet.xyz/auth/" + path, {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
